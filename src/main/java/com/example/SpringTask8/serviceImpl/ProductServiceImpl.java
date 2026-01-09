@@ -28,8 +28,8 @@ public class ProductServiceImpl implements ProductService {
     public String addProduct(Product product,int user_id) {
         try{
             Dealer dealer = userRepo.findById(user_id).get();
-            categoryRepo.saveAll(product.getCategories());
             product.setDealer(dealer);
+            dealer.getProducts().add(product);
             userRepo.save(dealer);
             return "Product added successfully";
         }catch(RuntimeException e){

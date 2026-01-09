@@ -1,8 +1,10 @@
 package com.example.SpringTask8.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,12 +18,12 @@ public class Dealer {
     private String email;
     private String password;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "profile_id")
     private Profile profile;
 
     @OneToMany(mappedBy = "dealer", cascade = CascadeType.ALL)
-    private List<Product> products;
+    private List<Product> products = new ArrayList<>();
 
 
 }

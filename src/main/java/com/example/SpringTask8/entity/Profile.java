@@ -1,5 +1,6 @@
 package com.example.SpringTask8.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,5 +16,6 @@ public class Profile {
     private int age;
 
     @OneToOne(mappedBy = "profile")
+    @JsonIgnore
     private Dealer dealer;
 }

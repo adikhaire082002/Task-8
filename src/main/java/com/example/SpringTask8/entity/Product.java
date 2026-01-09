@@ -1,5 +1,6 @@
 package com.example.SpringTask8.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -18,7 +19,7 @@ public class Product {
     private int price;
     private int stock;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "product_categories",
             joinColumns = @JoinColumn(name = "product_id"),
@@ -28,6 +29,7 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "dealer_id")
+    @JsonIgnore
     private Dealer dealer;
 
 }

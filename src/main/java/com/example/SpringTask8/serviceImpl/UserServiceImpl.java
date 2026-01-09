@@ -2,6 +2,7 @@ package com.example.SpringTask8.serviceImpl;
 
 import com.example.SpringTask8.entity.Dealer;
 import com.example.SpringTask8.entity.Product;
+import com.example.SpringTask8.entity.Profile;
 import com.example.SpringTask8.repository.UserRepo;
 import com.example.SpringTask8.service.ProductService;
 import com.example.SpringTask8.service.UserService;
@@ -26,10 +27,11 @@ public class UserServiceImpl implements UserService {
             if(userRepo.existsByEmail(dealer.getEmail())){
                 return "dealer already exists";
             }
+            dealer.getProfile();
             userRepo.save(dealer);
             return "dealer added";
         }catch (RuntimeException e){
-            throw new RuntimeException("Something went wrong");
+            throw new RuntimeException(e.getMessage());
         }
 
     }
