@@ -93,4 +93,15 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getAllProduct() {
         return productRepo.findAll();
     }
+
+    private void saveCategory(List<Category> categories){
+
+        for (Category category : categories) {
+            boolean b = categoryRepo.existsByName(category.getName());
+            if(!b){
+                categoryRepo.save(category);
+            }
+        }
+    }
 }
+

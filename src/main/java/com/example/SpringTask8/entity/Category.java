@@ -16,7 +16,7 @@ public class Category {
 
     private String name;
 
-    @ManyToMany(mappedBy = "categories", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(mappedBy = "categories")
     @JsonIgnore
     private List<Product> products;
 }

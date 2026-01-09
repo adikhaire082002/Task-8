@@ -19,7 +19,7 @@ public class Product {
     private int price;
     private int stock;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinTable(
             name = "product_categories",
             joinColumns = @JoinColumn(name = "product_id"),
